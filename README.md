@@ -1,3 +1,3 @@
-Dealsbox-landing
+imagify
 ==================
-The Landing page for Dealsbox mobile app
+resize and manipulate your image on the fly
