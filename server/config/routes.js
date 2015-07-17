@@ -12,6 +12,22 @@ module.exports = function(server) {
         method: 'GET',
         path: '/',
         config: controller.base.index
+    },{
+        method: 'GET',
+        path: '/partials/{path*}',
+        config: controller.assets.partials
+    }, {
+        method: 'GET',
+        path: '/images/{path*}',
+        config: controller.assets.images
+    }, {
+        method: 'GET',
+        path: '/css/{path*}',
+        config: controller.assets.css
+    }, {
+        method: 'GET',
+        path: '/js/{path*}',
+        config: controller.assets.js
     }];
     return routeTable;
 };
