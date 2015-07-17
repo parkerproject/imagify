@@ -7,7 +7,7 @@ rootPath = path.normalize(__dirname + '/../..');
 // Defaults that you can access when you require this config.
 module.exports = {
     root: rootPath,
-    port: parseInt(process.env.PORT, 10) || 1100,
+    port: parseInt(process.env.PORT, 10) || 2500,
     hapi: {
         options: {
             views: {
