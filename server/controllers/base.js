@@ -15,7 +15,7 @@ var fileCreated = new EventEmitter();
 
 
 module.exports = {
-  index: {
+  img: {
     handler: function (request, reply) {
 
 
