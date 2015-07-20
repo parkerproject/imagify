@@ -11,7 +11,11 @@ var lwip = require('lwip');
 var sha1 = require('sha1');
 var EventEmitter = require('events').EventEmitter;
 var fileCreated = new EventEmitter();
+var url = require('url');
 
+function ratio(width, height) {
+  return width / height;
+}
 
 
 module.exports = {
@@ -40,14 +44,42 @@ module.exports = {
         imagify.download(url, name, function () {
 
           lwip.open(img_path, function (err, image) {
+            var width, height, ifNotGiven, batch = image.batch();
 
-            var width = parseInt(request.query.resize_width) || image.width();
-            var height = parseInt(request.query.resize_height) || image.height();
+            if (request.query.resize_width || request.query.resize_height) {
 
-            image.resize(width, height, function (err, img) {
-              img.writeFile(img_path, function (err) {
-                resolve();
-              });
+              if (request.query.resize_width && request.query.resize_height) {
+
+                width = parseInt(request.query.resize_width);
+                height = parseInt(request.query.resize_height);
+
+              } else if (request.query.resize_width && !request.query.resize_height) {
+
+                width = parseInt(request.query.resize_width);
+                height = width / ratio(image.width(), image.height());
+
+              } else if (!request.query.resize_width && request.query.resize_height) {
+
+                height = parseInt(request.query.resize_height);
+                width = height * ratio(image.width(), image.height());
+              } else {
+
+                width = image.width();
+                height = image.height();
+              }
+
+              batch.resize(width, height);
+
+            }
+
+            if (request.query.crop_width && request.query.crop_height) {
+
+              batch.crop(parseInt(request.query.crop_width), parseInt(request.query.crop_height));
+
+            }
+
+            batch.writeFile(img_path, function (err) {
+              resolve();
             });
 
           });

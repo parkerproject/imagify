@@ -18,6 +18,10 @@ module.exports = function (server) {
     config: controller.base.img
     }, {
     method: 'GET',
+    path: '/awesome',
+    config: controller.static.awesome
+  }, {
+    method: 'GET',
     path: '/partials/{path*}',
     config: controller.assets.partials
     }, {

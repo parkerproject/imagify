@@ -1,0 +1,98 @@
+{% extends './layouts/default.html' %} {% block title %}{{ title }}{% endblock %} {% block content %}
+<div class="nav-container">
+  <nav class="nav-1">
+    <div class="navbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-xs-4">
+            <a href="#" class="logotext">imagify.co</a>
+          </div>
+
+          <div class="col-md-3 text-right col-sm-6 col-md-push-6 col-xs-8">
+            <div class="mobile-toggle">
+              <div class="upper"></div>
+              <div class="middle"></div>
+              <div class="lower"></div>
+            </div>
+          </div>
+
+          <div class="col-md-6 text-right col-sm-12 col-xs-12">
+            <ul class="menu">
+              <li><a href="/awesome">Why so awesome?</a></li>
+              <li><a href="#">Dashboard</a></li>
+              <li><a href="#">Login</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</div>
+
+<div class="main-container" ng-controller="imagifyController">
+  <section class="features features-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+          <h4>OK, let's see this in action.</h4>
+          <p>
+            <strong class="primary-text-color">image url</strong>: http://bit.ly/1Mjm2rb
+            <br/>
+            <strong class="primary-text-color">original height</strong>: 3744px
+            <br />
+            <strong class="primary-text-color">original width</strong>: 2820px
+          </p>
+          <ul class="demo">
+            <li>I want to
+              <select class="actions">
+                <option ng-repeat="item in items" value="{{item}}">{{item}}</option>
+              </select> image to
+              <input type="number" class="input-demo width" min="0" max="3744" step="10" value="3744" /> width and
+              <input type="number" class="input-demo height" min="0" max="2820" step="10" value="2820" /> height
+          </ul>
+
+
+          <p>
+            <strong class="primary-text-color">imagify image</strong>: http://imagify.co/img?token=047fg33&url=http://bit.ly/1Mjm2rb&
+            <strong style="color: green;">{width}</strong>&
+            <strong style="color:green;">{height}</strong>
+
+            <p>
+              <img src="https://dl.dropboxusercontent.com/u/9995989/person-woman-girl-sitting.jpg" />
+            </p>
+
+            <p>With multiple options for all sections - Launchkit has the right stuff for your next landing page.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4 text-center feature">
+          <img alt="Feature Image" src="img/small7.jpg">
+          <h5>Unique, Engaging Style</h5>
+          <p>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
+          </p>
+        </div>
+
+        <div class="col-sm-4 text-center feature">
+          <img alt="Feature Image" src="img/small8.jpg">
+          <h5>Built for mobile and up</h5>
+          <p>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
+          </p>
+        </div>
+
+        <div class="col-sm-4 text-center feature">
+          <img alt="Feature Image" src="img/small6.jpg">
+          <h5>Variant Builder included</h5>
+          <p>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

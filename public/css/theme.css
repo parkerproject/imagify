@@ -24,8 +24,8 @@
  20. Footers
 
 /*!---------- GLOBAL STYLES ----------*/
+
 body {
-  background: #eee;
   -webkit-backface-visibility: hidden;
 }
 .main-container,

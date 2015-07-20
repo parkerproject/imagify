@@ -6,12 +6,21 @@ module.exports = {
   index: {
     handler: function (request, reply) {
 
-      // reply.view('index', {
-      //
-      //   title: 'Discover and save on local deals - DEALSBOX'
-      // });
+      reply.view('index', {
 
-      reply('home page');
+        title: 'Manipulate images on the fly'
+      });
+
+    }
+  },
+
+  awesome: {
+    handler: function (request, reply) {
+
+      reply.view('awesome', {
+
+        title: 'Manipulate images on the fly'
+      });
 
     }
   }
