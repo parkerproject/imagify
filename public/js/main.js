@@ -1,7 +1,7 @@
-$(function () {
+$(function() {
 
   $('.email').val('');
-  $(document).on('click', '.cta', function (e) {
+  $(document).on('click', '.cta', function(e) {
     e.preventDefault();
     checkEmail();
   });
@@ -17,35 +17,46 @@ function validateEmail(email) {
 
 function checkEmail() {
   var email = document.querySelector('.email').value;
-  if (validateEmail(email)) {
-    sendEmail(email);
-  } else {
-    $('.error').addClass('animated fadeInDown').text('Enter valid email');
+  var name = document.querySelector('.name').value;
+
+  if (!validateEmail(email)) {
+    $('.error').text('Enter valid email');
+  }
+
+  if (name === '') {
+    $('.error').text('Enter name');
+  }
+
+
+
+  if (validateEmail(email) && name !== '') {
+    sendEmail(email, name);
   }
 }
 
-function sendEmail(email) {
-  $('.cta').val('processing...');
+function sendEmail(email, name) {
+  $('.cta').text('processing...');
 
 
   var post_data = {
-    'user_email': email
+    'user_email': email,
+    'name': name
   };
 
-  $.post('/process_email', post_data, function (response) {
+  $.post('/process_email', post_data, function(response) {
 
-    if (response.message !== 'Signup failed') {
+    if (response.status !== 'failed') {
 
-      $('.email-section').find('form').remove();
+      $('.modal-content').find('form').remove();
 
-      $('.email-section').html(
-        '<div class="animated fadeInDown success">We received your request. Thank you!</div>'
+      $('.modal-content').html(
+        '<div class="primary-text-color text-center">' + response.status + '</div>'
       );
 
     } else {
       document.querySelector('.error').innerHTML =
         'An error occured. Please try again later.';
-      $('.cta').val('Request an invite');
+      $('.cta').val('Signup');
     }
 
   });

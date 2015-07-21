@@ -12,7 +12,6 @@ module.exports = {
       'js/spectragram.min.js',
       'js/parallax.js',
       'js/scripts.js',
-      'js/angular.min.js',
       'js/main.js'
     ],
 

@@ -4,32 +4,39 @@
 <head>
   <meta charset="utf-8">
   <title>Manipulate your images on the fly - imagify</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% block content %}{% endblock %} {% include "../includes/head.html" %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">{% block content %}{% endblock %} {% include "../includes/head.html" %}
   <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 </head>
 
 <body class={{id}}>
-
-  <p class="text-center">&copy; 2015 imagify - All Rights Reserved</p>
-  <p class="text-center trademark">
-    <small>Made with <i style=color:#D32F2F;font-size:16px;>&hearts;</i> in NYC</small>
-  </p>
-  <img src="images/DO_Proudly_Hosted_Badge_Grey-1652c782.png" /> {% include "../includes/foot.html" %}
+  <footer>
+    <p class="text-center">&copy; 2015 imagify - All Rights Reserved</p>
+    <p class="text-center trademark">
+<!--       <small>Made with <i style=color:#D32F2F;font-size:16px;>&hearts;</i> in NYC</small> -->
+			<small>Made with <img src="http://s.w.org/images/core/emoji/72x72/2764.png"> in NYC</small>
+    </p>
+    <img src="images/DO_Proudly_Hosted_Badge_Grey-1652c782.png" />
+  </footer>
+  {% include "../includes/foot.html" %}
 
   <!-- signup modal -->
   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
+				<h5 class="modal-title">Sign up to imagify</h5>
+				<span class="text-danger error"></span>
         <form class="form-inline signup-form" method="post" action="/process_email">
-          <div class="">
+          <div class="form-row">
             <label for="name">Name</label>
-            <input type="name" class="form-control" id="name" placeholder="Name">
+            <input type="name" class="form-control name" id="name" placeholder="Name">
           </div>
-          <div class="">
+          <div class="form-row">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Email">
+            <input type="email" class="form-control email" id="email" placeholder="Email">
           </div>
+					
+					<button class="modal-button cta">Sign up</button>
         </form>
       </div>
     </div>
@@ -42,7 +49,7 @@
         (i[r].q = i[r].q || []).push(arguments)
       }, i[r].l = 1 * new Date();
       a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
+      m = s.getElementsByTagName(o)[0];
       a.async = 1;
       a.src = g;
       m.parentNode.insertBefore(a, m)

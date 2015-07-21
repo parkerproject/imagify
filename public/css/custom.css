@@ -139,6 +139,7 @@ code{
   color: #03A9F4;
   top: -6px;
   position: relative;
+	background: transparent;
 }
 
 .signup:hover{
@@ -154,11 +155,74 @@ code{
   font-size: 25px;
 }
 
-#signup-form input{
-   width: 300px;
-   height: 25px;
+.signup-form{
+	width: 100%;
 }
 
-#signup-form label{
+
+footer{
+	bottom: 0;
+	position: relative;
+}
+
+footer img{
+	margin: 0 auto;
+  width: 100px;
   display: block;
 }
+
+footer p{
+	font-size: 13px;
+}
+
+.modal-content{
+  width: 400px;
+  margin: 0 auto;
+  padding: 30px 20px;
+	border-radius:3px;
+}
+
+label{
+	display: block;
+	margin-bottom: 0;
+	color: #212121
+}
+
+.form-inline .form-control{
+	width: 100%;
+	border-radius: 3px;
+	box-shadow: none;
+	border: 1px solid #B3E5FC;
+}
+
+.form-row{
+	margin-bottom: 10px;
+}
+
+.modal-button{
+  border: 1px solid #4CAF50;
+	background: #4CAF50;
+  border-radius: 3px;
+  padding: 5px 10px;
+  width: 126px;
+  display: block;
+  text-align: center;
+  color: white;
+	margin: 0 auto;
+}
+
+.error{
+	font-size: 13px;
+}
+
+.modal-title{
+	border-bottom: 1px solid #B3E5FC;
+	margin-bottom: 27px;
+}
+
+.trademark img{
+	width: 10px;
+  display: inline;
+  margin: 0 2px;
+}
+
