@@ -19,7 +19,8 @@ module.exports = {
 
       reply.view('awesome', {
 
-        title: 'Manipulate images on the fly'
+        title: 'Manipulate images on the fly',
+        id: 'docs'
       });
 
     }

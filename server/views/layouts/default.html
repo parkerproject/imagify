@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="imagify">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -9,14 +9,49 @@
   <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
+<body class={{id}}>
 
-  {% include "../includes/foot.html" %}
   <p class="text-center">&copy; 2015 imagify - All Rights Reserved</p>
   <p class="text-center trademark">
     <small>Made with <i style=color:#D32F2F;font-size:16px;>&hearts;</i> in NYC</small>
   </p>
-  <img src="images/DO_Proudly_Hosted_Badge_Grey-1652c782.png" />
+  <img src="images/DO_Proudly_Hosted_Badge_Grey-1652c782.png" /> {% include "../includes/foot.html" %}
+
+  <!-- signup modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form class="form-inline" method="post" action="/process_email">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="name" class="form-control" id="name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Email">
+          </div>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-6101640-29', 'auto');
+    ga('send', 'pageview');
+  </script>
 </body>
 
 </html>

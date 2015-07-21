@@ -1,11 +1,11 @@
 {% extends './layouts/default.html' %} {% block title %}{{ title }}{% endblock %} {% block content %}
 <div class="nav-container">
   <nav class="nav-1">
-    <div class="navbar">
+    <div class="navbar dark-primary-color">
       <div class="container">
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-4">
-            <a href="#" class="logotext">imagify.co</a>
+            <a href="/" class="logotext">imagify.co</a>
           </div>
 
           <div class="col-md-3 text-right col-sm-6 col-md-push-6 col-xs-8">
@@ -18,9 +18,9 @@
 
           <div class="col-md-6 text-right col-sm-12 col-xs-12">
             <ul class="menu">
-              <li><a href="/awesome">Why so awesome?</a></li>
+              <li><a href="/awesome">How to use imagify</a></li>
               <li><a href="#">Dashboard</a></li>
-              <li><a href="#">Login</a></li>
+              <li><a href="#" class="signup">Signup</a></li>
             </ul>
           </div>
 
@@ -31,65 +31,190 @@
 
 </div>
 
-<div class="main-container" ng-controller="imagifyController">
-  <section class="features features-2">
+<div class="main-container">
+  <section class="features" style="padding-top:0;">
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
-          <h4>OK, let's see this in action.</h4>
-          <p>
-            <strong class="primary-text-color">image url</strong>: http://bit.ly/1Mjm2rb
-            <br/>
-            <strong class="primary-text-color">original height</strong>: 3744px
-            <br />
-            <strong class="primary-text-color">original width</strong>: 2820px
-          </p>
-          <ul class="demo">
-            <li>I want to
-              <select class="actions">
-                <option ng-repeat="item in items" value="{{item}}">{{item}}</option>
-              </select> image to
-              <input type="number" class="input-demo width" min="0" max="3744" step="10" value="3744" /> width and
-              <input type="number" class="input-demo height" min="0" max="2820" step="10" value="2820" /> height
-          </ul>
-
-
-          <p>
-            <strong class="primary-text-color">imagify image</strong>: http://imagify.co/img?token=047fg33&url=http://bit.ly/1Mjm2rb&
-            <strong style="color: green;">{width}</strong>&
-            <strong style="color:green;">{height}</strong>
-
-            <p>
-              <img src="https://dl.dropboxusercontent.com/u/9995989/person-woman-girl-sitting.jpg" />
-            </p>
-
-            <p>With multiple options for all sections - Launchkit has the right stuff for your next landing page.</p>
+          <h4 class="how-to">How to use imagify</h4>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-sm-4 text-center feature">
-          <img alt="Feature Image" src="img/small7.jpg">
-          <h5>Unique, Engaging Style</h5>
+      <div class="row space">
+        <div class="col-md-10 col-md-offset-1 col-sm-12">
+          <h5>Resize image</h5>
+          <table class="table table-bordered">
+            <colgroup>
+              <col class="col-xs-1">
+                <col class="col-xs-7">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>params</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">
+                  <code>token</code>
+                </th>
+                <td class="primary-text-color">Signup to receive token -
+                  <span class="text-danger">required</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <code>url</code>
+                </th>
+                <td class="primary-text-color">Your image URL -
+                  <span class="text-danger">required</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <code>resize_width</code>
+                </th>
+                <td class="primary-text-color">New width for image -
+                  <span class="text-warning">optional if resize_height is provided</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <code>resize_height</code>
+                </th>
+                <td class="primary-text-color">New height for image -
+                  <span class="text-warning">optional if resize_width is provided</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h6 class="secondary-text-color">Examples</h6>
+          <ol class="examples">
+            <li>
+              <p>
+                <span class="primary-text-color">resize image to 300px width
+                  <br />
+                  <strong class="primary-text-color">imagify image</strong>: http://imagify.co/img?
+                  <span style="color: green;">token=047fg33&url=http://bit.ly/1Mjm2rb&resize_width=300
+                  </span>
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="primary-text-color">resize image to 500px height
+                  <br />
+                  <strong class="primary-text-color">imagify image</strong>: http://imagify.co/img?
+                  <span style="color: green;">token=047fg33&url=http://bit.ly/1Mjm2rb&resize_height=500
+                  </span>
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="primary-text-color">resize image to 300px width & 500px height
+                  <br />
+                  <strong class="primary-text-color">imagify image</strong>: http://imagify.co/img?
+                  <span style="color: green;">token=047fg33&url=http://bit.ly/1Mjm2rb&resize_width=300&resize_height=500
+                  </span>
+              </p>
+            </li>
+          </ol>
+
           <p>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
+            <em>Note: when you only provide one dimension, e.g 1 &amp; 2 above, the other dimension size will be auto based on the aspect ratio of original image size</em>
           </p>
         </div>
 
-        <div class="col-sm-4 text-center feature">
-          <img alt="Feature Image" src="img/small8.jpg">
-          <h5>Built for mobile and up</h5>
-          <p>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
-          </p>
+      </div>
+
+      <div class="row space">
+        <div class="col-md-10 col-md-offset-1 col-sm-12">
+          <h5>Crop a rectangle from center</h5>
+          <table class="table table-bordered">
+            <colgroup>
+              <col class="col-xs-1">
+                <col class="col-xs-7">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>params</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">
+                  <code>token</code>
+                </th>
+                <td class="primary-text-color">Signup to receive token -
+                  <span class="text-danger">required</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <code>url</code>
+                </th>
+                <td class="primary-text-color">Your image URL -
+                  <span class="text-danger">required</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <code>crop_width</code>
+                </th>
+                <td class="primary-text-color">Width of the rectangle to crop from the center of the image. -
+                  <span class="text-danger">required</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <code>crop_height</code>
+                </th>
+                <td class="primary-text-color">Height of the rectangle to crop from the center of the image. -
+                  <span class="text-danger">required</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h6 class="secondary-text-color">Example</h6>
+          <ol class="examples">
+            <li>
+              <p>
+                <span class="primary-text-color">Crop an image from center, 500px width by 200px height
+                  <br />
+                  <strong class="primary-text-color">imagify image</strong>: http://imagify.co/img?
+                  <span style="color: green;">token=047fg33&url=http://bit.ly/1Mjm2rb&crop_width=500&crop_height=200
+                  </span>
+              </p>
+            </li>
+          </ol>
         </div>
 
-        <div class="col-sm-4 text-center feature">
-          <img alt="Feature Image" src="img/small6.jpg">
-          <h5>Variant Builder included</h5>
-          <p>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
-          </p>
+      </div>
+
+      <div class="row space">
+        <div class="col-md-10 col-md-offset-1 col-sm-12">
+          <h5>More features coming soon..</h5>
+          <ul>
+            <li>Scale</li>
+            <li>Contain</li>
+            <li>Cover</li>
+            <li>Rotate</li>
+            <li>Blur</li>
+            <li>Sharpen</li>
+            <li>Mirror</li>
+            <li>Flip</li>
+            <li>Border</li>
+            <li>Pad</li>
+            <li>Adjust saturation</li>
+            <li>Adjust lightness: lighten / darken</li>
+            <li>Adjust hue</li>
+            <li>Fade (adjust transparency)</li>
+            <li>Opacify</li>
+            <li>Paste</li>
+            <li>Set pixel</li>
+            <li>Pixel</li>
+          </ul>
         </div>
       </div>
     </div>
