@@ -1,14 +1,20 @@
 require('dotenv').load();
-var Mailgun = require('mailgun').Mailgun;
-var mg = new Mailgun(process.env.MAILGUN);
+var domain = 'sandbox069a93c4f3434558b73eb6e0e0cf7a42.mailgun.org';
+var mailgun = require('mailgun-js')({
+  apiKey: process.env.MAILGUN_KEY,
+  domain: domain
+});
+
 
 module.exports = function (email, name, subject, html) {
-  mg.sendRaw('noreply@imagify.co', [email],
-    subject,
-    html,
-    'noreply@example.com', {},
-    function (err) {
-      if (err) console.log('Oh noes: ' + err);
-      else console.log('Success');
-    });
+  var data = {
+    from: 'imagify <no-reply@imagify.co>',
+    to: email,
+    subject: subject,
+    html: html
+  };
+
+  mailgun.messages().send(data, function (error, body) {
+    console.log(body);
+  });
 };
