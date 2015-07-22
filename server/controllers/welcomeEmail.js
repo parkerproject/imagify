@@ -12,13 +12,17 @@ module.exports = {
     handler: function(request, reply) {
 
 
-      db.users.update({
-        userId: request.query.user,
-				email: request.query.email,
-				name: request.query.name
-      }, {
-        confirm_email: 'yes'
-      }, function() {
+      db.users.findAndModify({
+        query: {
+          userId: request.query.user
+        },
+        update: {
+          $set: {
+            confirm_email: 'yes'
+          }
+        },
+        new: true
+      }, function(err, doc, lastErrorObject) {
         swig.renderFile(__base + 'server/views/welcomeEmail.html', {
             token: request.query.user,
             name: request.query.name

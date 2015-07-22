@@ -50,7 +50,7 @@ function sendEmail(email, name) {
       $('.modal-content').find('form').remove();
 
       $('.modal-content').html(
-        '<div class="primary-text-color text-center">' + response.status + '</div>'
+        '<div class="primary-text-color text-center"><strong>' + response.status + '</strong></div>'
       );
 
     } else {

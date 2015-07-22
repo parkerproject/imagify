@@ -47,7 +47,7 @@ module.exports = {
         } else {
           identify(data);
 
-          var message = (doc.updatedExisting) ? 'You have already registered. Token re-sent!' : 'Please check your inbox to verify your email';
+          var message = (doc.updatedExisting) ? 'You have already registered!' : 'Please check your inbox to verify your email';
 
           swig.renderFile(__base + 'server/views/confirmEmail.html', {
               name: data.name,
