@@ -12,7 +12,7 @@ module.exports = {
   index: {
     handler: function (request, reply) {
 
-      db.users.findAndModify({
+      db.users.update({
         query: {
           userId: request.query.user
         },

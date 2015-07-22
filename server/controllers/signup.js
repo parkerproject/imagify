@@ -58,7 +58,7 @@ module.exports = {
                 throw err;
               }
               var subject = 'imagify - Please activate your aacount';
-              sendEmail(data.email, data.name, subject, content);
+              sendEmail(data.email, subject, content);
               reply({
                 status: message
               });
