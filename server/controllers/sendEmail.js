@@ -6,9 +6,9 @@ var mailgun = require('mailgun-js')({
 });
 
 
-module.exports = function (email, name, subject, html) {
+module.exports = function (email, subject, html) {
   var data = {
-    from: 'imagify <no-reply@imagify.co>',
+    from: 'imagify <hello@imagify.co>',
     to: email,
     subject: subject,
     html: html
