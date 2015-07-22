@@ -7,17 +7,6 @@ var sendEmail = require('./sendEmail');
 var randtoken = require('rand-token');
 var token = randtoken.generate(5);
 
-function update(id) {
-  db.users.update({
-    userId: id
-  }, {
-    confirm_email: 'yes',
-    token: 'token'
-  }, {}, function () {
-    console.log('user updated');
-  });
-
-}
 
 module.exports = {
   index: {
@@ -44,7 +33,7 @@ module.exports = {
             }
             var subject = 'Welcome to imagify';
             sendEmail(doc.email, subject, content);
-            reply('Your account is active, token is ' + doc.token);
+            reply('Your account is now action, check your email for you token');
           });
       });
 
