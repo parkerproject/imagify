@@ -25,7 +25,7 @@ function identify(data) {
 
 module.exports = {
   index: {
-    handler: function (request, reply) {
+    handler: function(request, reply) {
 
       var data = {
         email: request.payload.user_email,
@@ -38,7 +38,7 @@ module.exports = {
         email: data.email
       }, data, {
         upsert: true
-      }, function (err, doc) {
+      }, function(err, doc) {
 
         if (err) {
           reply({
@@ -51,9 +51,9 @@ module.exports = {
 
           swig.renderFile(__base + 'server/views/confirmEmail.html', {
               name: data.name,
-              url: 'http://imagify.co/activate?user=' + data.userId
+              url: 'http://imagify.co/activate?user=' + data.userId + '&email=' + data.email + '&name=' + data.name
             },
-            function (err, content) {
+            function(err, content) {
               if (err) {
                 throw err;
               }

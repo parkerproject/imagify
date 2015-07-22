@@ -4,35 +4,31 @@ var collections = ['users'];
 var db = require("mongojs").connect(process.env.IMAGIFY_MONGODB_URL, collections);
 var swig = require('swig');
 var sendEmail = require('./sendEmail');
-var randtoken = require('rand-token');
-var token = randtoken.generate(5);
+
 
 
 module.exports = {
   index: {
-    handler: function (request, reply) {
+    handler: function(request, reply) {
+
 
       db.users.update({
-        query: {
-          userId: request.query.user
-        },
-        update: {
-          confirm_email: 'yes',
-          token: token
-        },
-        new: true
-      }, function (err, doc, lastErrorObject) {
-        // doc.tag === 'maintainer'
+        userId: request.query.user,
+				email: request.query.email,
+				name: request.query.name
+      }, {
+        confirm_email: 'yes'
+      }, function() {
         swig.renderFile(__base + 'server/views/welcomeEmail.html', {
-            token: doc.token,
-            name: doc.name
+            token: request.query.user,
+            name: request.query.name
           },
-          function (err, content) {
+          function(err, content) {
             if (err) {
               throw err;
             }
             var subject = 'Welcome to imagify';
-            sendEmail(doc.email, subject, content);
+            sendEmail(request.query.email, subject, content);
             reply('Your account is now action, check your email for you token');
           });
       });
