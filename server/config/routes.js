@@ -3,7 +3,7 @@
  */
 var requireDirectory = require('require-directory');
 
-module.exports = function(server) {
+module.exports = function (server) {
   // Bootstrap your controllers so you dont have to load them individually. This loads them all into the controller name space. https://github.com/troygoode/node-require-directory
   var controller = requireDirectory(module, '../controllers');
 
@@ -20,10 +20,14 @@ module.exports = function(server) {
     method: 'GET',
     path: '/awesome',
     config: controller.static.awesome
-  },{
+  }, {
     method: 'POST',
     path: '/process_email',
     config: controller.signup.index
+  }, {
+    method: 'GET',
+    path: '/activate',
+    config: controller.welcomeEmail.index
   }, {
     method: 'GET',
     path: '/partials/{path*}',
