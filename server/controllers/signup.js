@@ -47,7 +47,7 @@ module.exports = {
         } else {
           identify(data);
 
-          var message = (doc.updatedExisting) ? 'You have already registered!' : 'Please check your inbox to verify your email';
+          var message = (doc.updatedExisting) ? 'You have already registered! We just sent you an activation email.' : 'Please check your inbox to verify your email.';
 
           swig.renderFile(__base + 'server/views/confirmEmail.html', {
               name: data.name,
@@ -57,7 +57,7 @@ module.exports = {
               if (err) {
                 throw err;
               }
-              var subject = 'imagify - Please activate your aacount';
+              var subject = 'imagify - Please activate your account';
               sendEmail(data.email, subject, content);
               reply({
                 status: message

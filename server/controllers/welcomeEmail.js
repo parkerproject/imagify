@@ -33,7 +33,7 @@ module.exports = {
             }
             var subject = 'Welcome to imagify';
             sendEmail(request.query.email, subject, content);
-            reply('Your account is now action, check your email for you token');
+            reply('<h1>Your account is now active, check your email for your token.</h1>');
           });
       });
 
