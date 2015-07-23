@@ -26,6 +26,7 @@
     "hapi-assets": "~0.2.1",
     "hapi-cache-buster": "~0.2.0",
     "hapi-named-routes": "~0.2.0",
+    "image-type": "^2.0.2",
     "joi": "^6.5.0",
     "lodash": "^3.10.0",
     "lwip": "0.0.7",

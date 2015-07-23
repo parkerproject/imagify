@@ -226,3 +226,6 @@ label{
   margin: 0 2px;
 }
 
+#dashboardModal .modal-content{
+  width: 100%;
+}
