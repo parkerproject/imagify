@@ -33,7 +33,11 @@ module.exports = {
           typeObj = imageType(chunk);
           fileType = (typeObj !== null) ? typeObj.ext : null;
 
-          if (acceptedExt.indexOf(fileType === -1) || fileType !== null) {
+          if (fileType === null) {
+            reply('Your image is invalid');
+          }
+
+          if (acceptedExt.indexOf(fileType) !== -1 || fileType !== null) {
 
             var name = sha1(url) + '.' + fileType;
             var img_path = 'img/' + name;
@@ -121,7 +125,7 @@ module.exports = {
     },
     validate: {
       query: {
-        url: Joi.string(),
+        url: Joi.string().required(),
         resize_width: Joi.string(),
         resize_height: Joi.string(),
         crop_width: Joi.string(),
