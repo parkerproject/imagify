@@ -12,6 +12,22 @@
 
 <body class={{id}}>
   <footer>
+    <p class="text-center">
+      <span class="tweet-text">Need help?</span>
+      <a href="https://twitter.com/intent/tweet?screen_name=imagifyco" class="twitter-mention-button" data-size="large" data-related="imagifyco">Tweet to @imagifyco</a>
+      <script>
+        ! function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            p = /^http:/.test(d.location) ? 'http' : 'https';
+          if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + '://platform.twitter.com/widgets.js';
+            fjs.parentNode.insertBefore(js, fjs);
+          }
+        }(document, 'script', 'twitter-wjs');
+      </script>
+    </p>
     <p class="text-center">&copy; 2015 imagify - All Rights Reserved</p>
     <p class="text-center trademark">
       <!--       <small>Made with <i style=color:#D32F2F;font-size:16px;>&hearts;</i> in NYC</small> -->
@@ -50,6 +66,21 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <h5 class="modal-title">We are cooking something in the kitchen:)</h5>
+        <p>
+          <span class="updates-follow">Follow us to get updates</span> <a href="https://twitter.com/imagifyco" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @imagifyco</a>
+          <script>
+            ! function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0],
+                p = /^http:/.test(d.location) ? 'http' : 'https';
+              if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+              }
+            }(document, 'script', 'twitter-wjs');
+          </script>
+        </p>
         <img src="images/dashboard.png" />
       </div>
     </div>
