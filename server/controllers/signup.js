@@ -7,7 +7,6 @@ var swig = require('swig');
 var collections = ['users'];
 var db = require("mongojs").connect(process.env.IMAGIFY_MONGODB_URL, collections);
 var randtoken = require('rand-token');
-var user_id = randtoken.generate(7);
 var sendEmail = require('./sendEmail');
 
 
@@ -25,12 +24,12 @@ function identify(data) {
 
 module.exports = {
   index: {
-    handler: function(request, reply) {
+    handler: function (request, reply) {
 
       var data = {
         email: request.payload.user_email,
         name: request.payload.name,
-        userId: user_id,
+        userId: randtoken.generate(7),
         confirm_email: 'no'
       };
 
@@ -38,7 +37,7 @@ module.exports = {
         email: data.email
       }, data, {
         upsert: true
-      }, function(err, doc) {
+      }, function (err, doc) {
 
         if (err) {
           reply({
@@ -53,7 +52,7 @@ module.exports = {
               name: data.name,
               url: 'http://imagify.co/activate?user=' + data.userId + '&email=' + data.email + '&name=' + data.name
             },
-            function(err, content) {
+            function (err, content) {
               if (err) {
                 throw err;
               }
