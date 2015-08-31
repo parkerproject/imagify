@@ -8,7 +8,8 @@ var lwip = require('lwip');
 var sha1 = require('sha1');
 var EventEmitter = require('events').EventEmitter;
 var fileCreated = new EventEmitter();
-var http = require('http');
+// var http = require('http');
+// var https = require('https');
 var imageType = require('image-type');
 
 function ratio(width, height) {
@@ -25,6 +26,8 @@ module.exports = {
 
       var url = request.query.url;
       var fileType, typeObj;
+      var protocol = url.split(':')[0];
+      var http = (protocol == 'http') ? require('http') : require('https');
 
 
       http.get(url, function (res) {
@@ -129,7 +132,8 @@ module.exports = {
         resize_width: Joi.string(),
         resize_height: Joi.string(),
         crop_width: Joi.string(),
-        crop_height: Joi.string()
+        crop_height: Joi.string(),
+        token: Joi.string()
       }
     }
   }
