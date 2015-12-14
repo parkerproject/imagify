@@ -8,9 +8,8 @@ var lwip = require('lwip');
 var sha1 = require('sha1');
 var EventEmitter = require('events').EventEmitter;
 var fileCreated = new EventEmitter();
-// var http = require('http');
-// var https = require('https');
 var imageType = require('image-type');
+var _ = require('underscore');
 
 function ratio(width, height) {
   return width / height;
@@ -24,7 +23,7 @@ module.exports = {
     handler: function (request, reply) {
       "use strict";
 
-      var url = request.query.url;
+      var url = _.unescape(request.query.url);
       var fileType, typeObj;
       var protocol = url.split(':')[0];
       var http = (protocol == 'http') ? require('http') : require('https');
