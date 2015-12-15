@@ -22,8 +22,12 @@ module.exports = {
   img: {
     handler: function (request, reply) {
       "use strict";
+      if (!request.query.url) {
+        reply('You need the URL param');
+      }
 
-      var url = _.unescape(request.query.url);
+      var url = request.query.url;
+      console.log(url);
       var fileType, typeObj;
       var protocol = url.split(':')[0];
       var http = (protocol == 'http') ? require('http') : require('https');
@@ -125,15 +129,15 @@ module.exports = {
       });
 
     },
-    validate: {
-      query: {
-        url: Joi.string().required(),
-        resize_width: Joi.string(),
-        resize_height: Joi.string(),
-        crop_width: Joi.string(),
-        crop_height: Joi.string(),
-        token: Joi.string()
-      }
-    }
+    // validate: {
+    //   query: {
+    //     url: Joi.string().required(),
+    //     resize_width: Joi.string(),
+    //     resize_height: Joi.string(),
+    //     crop_width: Joi.string(),
+    //     crop_height: Joi.string(),
+    //     token: Joi.string()
+    //   }
+    // }
   }
 };
